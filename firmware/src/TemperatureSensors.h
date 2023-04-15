@@ -4,18 +4,42 @@
 #include <DallasTemperature.h>
 
 // Data wire is plugged into port 2 on the Arduino
-#define ONE_WIRE_BUS 4
 
+// 11 12 10 8 7 6 4 5
 // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
-OneWire oneWire(ONE_WIRE_BUS);
+OneWire oneWire0(5);
+OneWire oneWire1(4);
+OneWire oneWire2(6);
+OneWire oneWire3(7);
+
+OneWire oneWire4(8);
+OneWire oneWire5(10);
+OneWire oneWire6(12);
+OneWire oneWire7(11);
 
 // Pass our oneWire reference to Dallas Temperature.
-DallasTemperature sensors(&oneWire);
+DallasTemperature tempSensors0(&oneWire0);
+DallasTemperature tempSensors1(&oneWire1);
+DallasTemperature tempSensors2(&oneWire2);
+DallasTemperature tempSensors3(&oneWire3);
+
+DallasTemperature tempSensors4(&oneWire4);
+DallasTemperature tempSensors5(&oneWire5);
+DallasTemperature tempSensors6(&oneWire6);
+DallasTemperature tempSensors7(&oneWire7);
 
 
 void temperatureSensorsSetup(){
 
- sensors.begin();
+ tempSensors0.begin();
+ tempSensors1.begin();
+ tempSensors2.begin();
+ tempSensors3.begin();
+ 
+ tempSensors4.begin();
+ tempSensors5.begin();
+ tempSensors6.begin();
+ tempSensors7.begin();
 
 
 }
@@ -59,19 +83,54 @@ uint8_t findDevices(int pin)
 
 void temperatureSensorsLoop(){
 
-   Serial.print("Requesting temperatures...");
-  sensors.requestTemperatures(); // Send the command to get temperatures
-  Serial.println("DONE");
 
-  Serial.print("Temperature for the device 1 (index 0) is: ");
-  Serial.println(sensors.getTempCByIndex(0));
-  Serial.println("//\n// Start oneWireSearch.ino \n//");
+  tempSensors0.requestTemperatures();
+  tempSensors1.requestTemperatures();
+  tempSensors2.requestTemperatures();
+  tempSensors3.requestTemperatures();
 
-  for (uint8_t pin = 2; pin < 13; pin++)
-  {
-    findDevices(pin);
-  }
-  Serial.println("\n//\n// End oneWireSearch.ino \n//");
+  tempSensors4.requestTemperatures();
+  tempSensors5.requestTemperatures();
+  tempSensors6.requestTemperatures();
+  tempSensors7.requestTemperatures();
+
+  transmitStruct.temp0 =tempSensors0.getTempCByIndex(0);
+  transmitStruct.temp1 =tempSensors1.getTempCByIndex(0);
+  transmitStruct.temp2 =tempSensors2.getTempCByIndex(0);
+  transmitStruct.temp3 =tempSensors3.getTempCByIndex(0);
+
+  transmitStruct.temp4 =tempSensors4.getTempCByIndex(0);
+  transmitStruct.temp5 =tempSensors5.getTempCByIndex(0);
+  transmitStruct.temp6 =tempSensors6.getTempCByIndex(0);
+  transmitStruct.temp7 =tempSensors7.getTempCByIndex(0);
+
+  // Serial.print(tempSensors0.getTempCByIndex(0));
+  // Serial.print(",");
+  // Serial.print(tempSensors1.getTempCByIndex(0));
+  // Serial.print(",");
+  // Serial.print(tempSensors2.getTempCByIndex(0));
+  // Serial.print(",");
+  // Serial.print(tempSensors3.getTempCByIndex(0));
+  // Serial.print(",");
+
+  // Serial.print(tempSensors4.getTempCByIndex(0));
+  // Serial.print(",");
+  // Serial.print(tempSensors5.getTempCByIndex(0));
+  // Serial.print(",");
+  // Serial.print(tempSensors6.getTempCByIndex(0));
+  // Serial.print(",");
+  // Serial.println(tempSensors7.getTempCByIndex(0));
+
+
+  // Serial.print("Temperature for the device 1 (index 0) is: ");
+  // Serial.println(sensors.getTempCByIndex(0));
+  // Serial.println("//\n// Start oneWireSearch.ino \n//");
+
+  // for (uint8_t pin = 2; pin < 13; pin++)
+  // {
+  //   findDevices(pin);
+  // }
+  // Serial.println("\n//\n// End oneWireSearch.ino \n//");
 
 
 }
