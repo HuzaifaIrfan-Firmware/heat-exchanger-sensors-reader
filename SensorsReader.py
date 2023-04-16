@@ -2,7 +2,30 @@ from time import sleep
 from pySerialTransfer import pySerialTransfer
 
 
+
 class SensorsReader:
+
+    def convertRawReading(self):
+
+        self.Readings["temp0"]=self.RawReadings["temp0"]
+        self.Readings["temp1"]=self.RawReadings["temp1"]
+        self.Readings["temp2"]=self.RawReadings["temp2"]
+        self.Readings["temp3"]=self.RawReadings["temp3"]
+
+        self.Readings["temp4"]=self.RawReadings["temp4"]
+        self.Readings["temp5"]=self.RawReadings["temp5"]
+        self.Readings["temp6"]=self.RawReadings["temp6"]
+        self.Readings["temp7"]=self.RawReadings["temp7"]
+
+        self.Readings["pressure0"]=self.RawReadings["analog0"]/1024*5
+        self.Readings["pressure1"]=self.RawReadings["analog1"]/1024*5
+        self.Readings["pressure2"]=self.RawReadings["analog2"]/1024*5
+        self.Readings["pressure3"]=self.RawReadings["analog3"]/1024*5
+
+        self.Readings["flowRate0"]=self.RawReadings["interruptRate0"]*60/5.5
+        self.Readings["flowRate1"]=self.RawReadings["interruptRate1"]*60/5.5
+        
+
     def __init__(self, comport) -> None:
         self.RawReadings = {
             "temp0": 0,
@@ -23,6 +46,28 @@ class SensorsReader:
             "interruptRate0": 0,
             "interruptRate1": 0
         }
+
+        self.Readings = {
+            "temp0": 0,
+            "temp1": 0,
+            "temp2": 0,
+            "temp3": 0,
+
+            "temp4": 0,
+            "temp5": 0,
+            "temp6": 0,
+            "temp7": 0,
+
+            "pressure0": 0,
+            "pressure1": 0,
+            "pressure2": 0,
+            "pressure3": 0,
+
+            "flowRate0": 0,
+            "flowRate1": 0
+        }     
+
+
         self.comport = comport
 
         try:
@@ -40,7 +85,7 @@ class SensorsReader:
         self.link.open()
         sleep(1)
 
-    def print(self):
+    def printRawReadings(self):
 
         print('----- Sensor Raw Readings -----')
 
@@ -54,7 +99,22 @@ class SensorsReader:
         print('----- Flow Sensors (Interrupts Per Seconds) -----')
         print(
             f'{self.RawReadings["interruptRate0"]}, {self.RawReadings["interruptRate1"]}')
+        
+    def printReadings(self):
 
+        print('----- Sensor Readings -----')
+
+        print('----- Temperature Sensors (Centigrade) -----')
+        print(f'{self.Readings["temp0"]}, {self.Readings["temp1"]}, {self.Readings["temp2"]}, {self.Readings["temp3"]}, {self.Readings["temp4"]}, {self.Readings["temp5"]}, {self.Readings["temp6"]}, {self.Readings["temp7"]}')
+
+        print('----- Pressure Sensors (KPIa) -----')
+        print(
+            f'{self.Readings["pressure0"]}, {self.Readings["pressure1"]}, {self.Readings["pressure2"]}, {self.Readings["pressure3"]}')
+
+        print('----- Flow Sensors (LPM) -----')
+        print(
+            f'{self.Readings["flowRate0"]}, {self.Readings["flowRate1"]}')
+        
     def read(self):
 
         # try:
@@ -134,6 +194,10 @@ class SensorsReader:
         #     self.link.close()
 
         return False
+        
 
-    def get(self):
+    def getRawReadings(self):
         return self.RawReadings
+    
+    def getReadings(self):
+        return self.Readings

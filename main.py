@@ -10,9 +10,10 @@ if __name__ == '__main__':
 
     while(1):
         if(sensorsReader.read()):
-            sensorsReader.print()
+            sensorsReader.convertRawReading()
+            sensorsReader.printReadings()
             print(f"----------------{i}----------------")
             i=i+1
-            # print(sensorsReader.get()["temp0"])
-            # print(sensorsReader.get())
+            # print(sensorsReader.getRawReadings()["temp0"])
+            # print(sensorsReader.getRawReadings())
         
