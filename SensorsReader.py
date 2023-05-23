@@ -40,20 +40,20 @@ class SensorsReader:
 
     def LabelReading(self):
 
-        self.LabelledReadings["tempTubeIn"]=self.CalibratedReadings["temp4"]
+        self.LabelledReadings["tempTubeIn"]=self.CalibratedReadings["temp5"]
         self.LabelledReadings["tempTubeOut"]=self.CalibratedReadings["temp6"]
 
         self.LabelledReadings["tempShellIn"]=self.CalibratedReadings["temp0"]
-        self.LabelledReadings["tempShell1"]=self.CalibratedReadings["temp3"]
-        self.LabelledReadings["tempShell2"]=self.CalibratedReadings["temp7"]
-        self.LabelledReadings["tempShell3"]=self.CalibratedReadings["temp1"]
-        self.LabelledReadings["tempShell4"]=self.CalibratedReadings["temp5"]
-        self.LabelledReadings["tempShellOut"]=self.CalibratedReadings["temp2"]
+        self.LabelledReadings["tempShell1"]=self.CalibratedReadings["temp4"]
+        self.LabelledReadings["tempShell2"]=self.CalibratedReadings["temp3"]
+        self.LabelledReadings["tempShell3"]=self.CalibratedReadings["temp2"]
+        self.LabelledReadings["tempShell4"]=self.CalibratedReadings["temp1"]
+        self.LabelledReadings["tempShellOut"]=self.CalibratedReadings["temp7"]
 
         self.LabelledReadings["pressureTubeIn"]=self.CalibratedReadings["pressure0"]
-        self.LabelledReadings["pressureTubeOut"]=self.CalibratedReadings["pressure1"]
-        self.LabelledReadings["pressureShellIn"]=self.CalibratedReadings["pressure2"]
-        self.LabelledReadings["pressureShellOut"]=self.CalibratedReadings["pressure3"]
+        self.LabelledReadings["pressureTubeOut"]=self.CalibratedReadings["pressure3"]
+        self.LabelledReadings["pressureShellIn"]=self.CalibratedReadings["pressure1"]
+        self.LabelledReadings["pressureShellOut"]=self.CalibratedReadings["pressure2"]
 
         self.LabelledReadings["flowRateTube"]=self.CalibratedReadings["flowRate0"]
         self.LabelledReadings["flowRateShell"]=self.CalibratedReadings["flowRate1"]       

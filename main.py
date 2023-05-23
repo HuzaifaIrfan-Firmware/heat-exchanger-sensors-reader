@@ -27,7 +27,7 @@ fieldnames = [
 ]
 
 if __name__ == '__main__':
-    sensorsReader = SensorsReader('COM3')
+    sensorsReader = SensorsReader('/dev/ttyACM0')
     i = 0
 
 
