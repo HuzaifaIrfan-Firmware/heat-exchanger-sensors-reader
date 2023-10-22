@@ -7,9 +7,7 @@
 
 <hr>
 
-![heat exchange setup](cover.jpg)
 
-![controller](controller.jpg)
 
 
 ## Info
@@ -17,9 +15,19 @@
 - Save Real Time Sensor Data in csv file for further analysis or graph plotting
 
 
+### Heat Exchange Setup
+![heat exchange setup](cover.jpg)
+
+### Controller Board
+![controller](controller.jpg)
+
+### Raw Readings from Controller
+![raw_readings](raw_readings.jpg)
+
+
 ## Included in Repo
 - Arduino Firmware (For collecting data from sensors)
-- Python script (for Reading and Saving to CSV)
+- Python script (for Reading, Callibration, Display and Saving to CSV)
 
 ## Sensors and Readings
 
